@@ -10,7 +10,10 @@ export class EnvConfigModule extends ConfigModule {
   static forRoot(options: ConfigModuleOptions = {}): DynamicModule {
     return super.forRoot({
       ...options,
-      envFilePath: join(__dirname, `./env/${process.env.NODE_ENV}.env`),
+      envFilePath: join(
+        __dirname,
+        `../../../../.env.${process.env.NODE_ENV}.local`,
+      ),
     });
   }
 }
