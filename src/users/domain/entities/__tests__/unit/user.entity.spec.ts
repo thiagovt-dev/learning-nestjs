@@ -1,17 +1,15 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { faker } from '@faker-js/faker';
 import { UserEntity, UserInterface } from '../../user.entity';
+import { UserDataBuilder } from '@/users/domain/testing/helpers/userDataBuilder';
 
 describe('UserEntity unit tests', () => {
   let user: UserInterface;
   let sut: UserEntity;
 
   beforeEach(() => {
-    user = {
-      name: faker.person.fullName(),
-      email: faker.internet.email(),
-      password: faker.internet.password(),
-    };
-    sut = new UserEntity(user);
+    (user = UserDataBuilder({})), (sut = new UserEntity(user));
   });
   it('Constuctor method', () => {
     expect(sut.props.name).toEqual(user.name);
