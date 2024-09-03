@@ -1,4 +1,3 @@
-
 import { UserEntity, UserInterface } from '../../user.entity';
 import { UserDataBuilder } from '@/users/domain/testing/helpers/userDataBuilder';
 

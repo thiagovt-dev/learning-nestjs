@@ -1,3 +1,5 @@
+import { Entity } from '@/shared/domain/entities/entity';
+
 export interface UserInterface {
   name: string;
   email: string;
@@ -5,8 +7,12 @@ export interface UserInterface {
   createdAt?: Date;
 }
 
-export class UserEntity {
-  constructor(public readonly props: UserInterface) {
+export class UserEntity extends Entity {
+  constructor(
+    public readonly props: UserInterface,
+    id?: string,
+  ) {
+    super(props, id);
     this.props.createdAt = this.props.createdAt ?? new Date();
   }
 
