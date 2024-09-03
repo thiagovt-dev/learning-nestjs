@@ -16,23 +16,44 @@ describe('UserEntity unit tests', () => {
   });
 
   it('Getter of name field', () => {
-    expect(sut.name).toBeDefined();
-    expect(sut.name).toEqual(user.name);
-    expect(typeof sut.name).toBe('string');
+    expect(sut.props.name).toBeDefined();
+    expect(sut.props.name).toEqual(user.name);
+    expect(typeof sut.props.name).toBe('string');
+  });
+  it('Setter of name field', () => {
+    sut['name'] = 'other name';
+    expect(sut.props.name).toEqual('other name');
+    expect(typeof sut.props.name).toBe('string');
   });
 
   it('Getter of email field', () => {
-    expect(sut.email).toBeDefined();
-    expect(sut.email).toEqual(user.email);
-    expect(typeof sut.email).toBe('string');
+    expect(sut.props.email).toBeDefined();
+    expect(sut.props.email).toEqual(user.email);
+    expect(typeof sut.props.email).toBe('string');
   });
   it('Getter of password field', () => {
-    expect(sut.password).toBeDefined();
-    expect(sut.password).toEqual(user.password);
-    expect(typeof sut.email).toBe('string');
+    expect(sut.props.password).toBeDefined();
+    expect(sut.props.password).toEqual(user.password);
+    expect(typeof sut.props.password).toBe('string');
+  });
+  it('Setter of password field', () => {
+    sut['password'] = 'other password';
+    expect(sut.props.password).toEqual('other password');
+    expect(typeof sut.props.password).toBe('string');
   });
   it('Getter of createdAt field', () => {
-    expect(sut.createdAt).toBeDefined();
-    expect(sut.createdAt).toBeInstanceOf(Date);
+    expect(sut.props.createdAt).toBeDefined();
+    expect(sut.props.createdAt).toBeInstanceOf(Date);
+  });
+
+  it('Should update a user name', () => {
+    sut.updateName('other name');
+    expect(sut.props.name).toEqual('other name');
+    expect(typeof sut.props.name).toBe('string');
+  });
+  it('Should update the password field', () => {
+    sut.updatePassword('other password');
+    expect(sut.props.password).toEqual('other password');
+    expect(typeof sut.props.password).toBe('string');
   });
 });
